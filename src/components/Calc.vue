@@ -13,23 +13,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr v-bind:class="{ active: is18 }">
             <td>18.5未満</td>
             <td>低体重(痩せ型)</td>
           </tr>
-          <tr>
+          <tr v-bind:class="{ active: is25 }">
             <td>18.5〜25未満</td>
             <td>普通体重</td>
           </tr>
-          <tr>
+          <tr v-bind:class="{ active: is30 }">
             <td>25〜30未満</td>
             <td>肥満(1度)</td>
           </tr>
-          <tr>
+          <tr v-bind:class="{ active: is35 }">
             <td>30〜35未満</td>
             <td>肥満(2度)</td>
           </tr>
-          <tr>
+          <tr v-bind:class="{ active: is40 }">
             <td>35〜40未満</td>
             <td>肥満(3度)</td>
           </tr>
@@ -53,6 +53,11 @@ export default {
       height: '',
       result: '',
       err: '',
+      is18: false,
+      is25: false,
+      is30: false,
+      is35: false,
+      is40: false,
     }
   },
   methods:{
@@ -63,6 +68,9 @@ export default {
         const mHeight = this.height / 100
         const resCalc = this.weight / (mHeight * mHeight)
         this.result   = Math.round(resCalc * 100) /100;
+        if(this.result < 18.5){
+          this.is18 = true
+        }
         this.err= ''
       } else if (!this.weight && !this.height){
         this.err = "体重と身長を入力してください！"
@@ -94,6 +102,9 @@ li {
   margin: 0 10px;
 }
 a {
+  color: #42b983;
+}
+.active {
   color: #42b983;
 }
 </style>
