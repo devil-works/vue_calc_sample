@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import BmiCalcular from './components/Calc.vue'
+import BmiCalcular from './components/Bmi.vue'
 
 export default {
   name: 'App',
